@@ -1,0 +1,38 @@
+#!/bin/ksh
+
+. ./xrun_env.ksh
+
+SRC_PATH="./verilog"
+
+SRC="\
+$SRC_PATH/dlc_async.v \
+$SRC_PATH/dlc_crc.v \
+$SRC_PATH/dlc_crc_shift.v \
+$SRC_PATH/dlc_ecc_chk.v \
+$SRC_PATH/dlc_ecc_cor.v \
+$SRC_PATH/dlc_ecc_gen.v \
+$SRC_PATH/dlc_ff.v \
+$SRC_PATH/dlc_ff_spare.v \
+$SRC_PATH/dlc_omi_prbs7_chk.v \
+$SRC_PATH/dlc_omi_rx.v \
+$SRC_PATH/dlc_omi_rx_align.v \
+$SRC_PATH/dlc_omi_rx_lane.v \
+$SRC_PATH/dlc_omi_rx_lane_shift.v \
+$SRC_PATH/dlc_omi_rx_main.v \
+$SRC_PATH/dlc_omi_rx_train.v \
+$SRC_PATH/dlc_omi_tx.v \
+$SRC_PATH/dlc_omi_tx_align.v \
+$SRC_PATH/dlc_omi_tx_flit.v \
+$SRC_PATH/dlc_omi_tx_lane.v \
+$SRC_PATH/dlc_omi_tx_train.v \
+$SRC_PATH/dlc_omi_wrap.v \
+"
+
+OUTPUT=./libs
+
+xrun -64bit -compile -makelib $OUTPUT $SRC -endlib
+
+#xrun -64bit \
+#-access +rwc \
+#-top dlc_omi_wrap -gui
+

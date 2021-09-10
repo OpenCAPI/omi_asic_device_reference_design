@@ -1,0 +1,18 @@
+#!/bin/ksh
+
+./cmp_ibm.ksh
+./cmp_support.ksh
+./cmp_latches.ksh
+./cmp_clib.ksh
+./cmp_tl.ksh
+
+xrun -64bit -v93  \
+-reflib libs/ibm:ibm \
+-reflib libs/support:support \
+-reflib libs/latches:latches \
+-reflib libs/stdcell:stdcell \
+-reflib libs/clib:clib \
+-reflib libs/work:work \
+-access +rwc \
+-top omi -gui
+
